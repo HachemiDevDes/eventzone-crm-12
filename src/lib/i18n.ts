@@ -1,0 +1,110 @@
+export const translations = {
+  fr: {
+    dashboard: "Tableau de bord",
+    leads: "Prospects",
+    clients: "Clients",
+    offers: "Offres & Devis",
+    events: "Événements",
+    tasks: "Tâches",
+    settings: "Paramètres",
+    expectedRevenue: "Revenus Prévus",
+    searchPlaceholder: "Rechercher des prospects, clients, événements...",
+    convertLead: "Convertir en client ?",
+    convertConfirm: "Voulez-vous convertir ce prospect en client ? Cela créera un nouveau profil client.",
+    cancel: "Annuler",
+    convert: "Convertir",
+    convertedBadge: "Converti depuis un prospect",
+    successConvert: "Prospect converti avec succès !",
+    expectedRevenueTitle: "Prévisions de Revenus",
+    month: "Mois",
+    year: "Année",
+    amount: "Montant Prévu (DZD)",
+    save: "Enregistrer",
+    addRevenue: "Ajouter une prévision",
+    actual: "Actuel",
+    expected: "Prévu",
+    comparison: "Comparaison",
+    monthlyRevenue: "Revenus Mensuels (DZD)",
+    totalLeads: "Total Prospects",
+    wonRevenue: "Revenu Gagné",
+    pipelineValue: "Valeur du Pipeline",
+    upcomingEvents: "Événements à venir (30j)",
+    topClients: "Top 5 Clients",
+    noClients: "Aucun client pour le moment.",
+    overdueTasks: "Vous avez {count} tâche(s) en retard.",
+    overdueTasksTitle: "Tâches en retard",
+    teamPerformance: "Performance de l'équipe",
+    generatedRevenue: "Revenus générés",
+    targetReached: "Objectif atteint ! Félicitations 🎉",
+    targetRemaining: "Encore {amount} pour atteindre votre objectif.",
+    upcomingEventsTitle: "Événements à venir",
+    today: "Aujourd'hui",
+    inDays: "Dans {days} jours",
+    noUpcomingEvents: "Aucun événement prévu dans les 30 prochains jours.",
+    noTeamData: "Aucune donnée d'équipe.",
+    leadsManaged: "{count} prospects gérés",
+    documents: "Documents",
+    team: "Équipe"
+  },
+  en: {
+    dashboard: "Dashboard",
+    leads: "Prospects",
+    clients: "Clients",
+    offers: "Offers & Quotes",
+    events: "Events",
+    tasks: "Tasks",
+    settings: "Settings",
+    expectedRevenue: "Expected Revenue",
+    searchPlaceholder: "Search prospects, clients, events...",
+    convertLead: "Convert to client?",
+    convertConfirm: "Do you want to convert this prospect to a client? This will create a new client profile.",
+    cancel: "Cancel",
+    convert: "Convert",
+    convertedBadge: "Converted from prospect",
+    successConvert: "Prospect successfully converted!",
+    expectedRevenueTitle: "Expected Revenue Forecasts",
+    month: "Month",
+    year: "Year",
+    amount: "Expected Amount (DZD)",
+    save: "Save",
+    addRevenue: "Add Forecast",
+    actual: "Actual",
+    expected: "Expected",
+    comparison: "Comparison",
+    monthlyRevenue: "Monthly Revenue (DZD)",
+    totalLeads: "Total Prospects",
+    wonRevenue: "Won Revenue",
+    pipelineValue: "Pipeline Value",
+    upcomingEvents: "Upcoming Events (30d)",
+    topClients: "Top 5 Clients",
+    noClients: "No clients yet.",
+    overdueTasks: "You have {count} overdue task(s).",
+    overdueTasksTitle: "Overdue Tasks",
+    teamPerformance: "Team Performance",
+    generatedRevenue: "Generated Revenue",
+    targetReached: "Target reached! Congratulations 🎉",
+    targetRemaining: "{amount} left to reach your target.",
+    upcomingEventsTitle: "Upcoming Events",
+    today: "Today",
+    inDays: "In {days} days",
+    noUpcomingEvents: "No upcoming events in the next 30 days.",
+    noTeamData: "No team data.",
+    leadsManaged: "{count} prospects managed",
+    documents: "Documents",
+    team: "Team"
+  }
+};
+
+export type Language = 'fr' | 'en';
+
+export const useTranslation = (lang: Language) => {
+  return (key: keyof typeof translations['fr'], dynamicValues?: Record<string, string | number>) => {
+    let text = translations[lang][key] || translations['fr'][key] || key;
+    if (dynamicValues) {
+      Object.entries(dynamicValues).forEach(([k, v]) => {
+        text = text.replace(`{${k}}`, String(v));
+      });
+    }
+    return text;
+  };
+};
